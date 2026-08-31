@@ -1,0 +1,13 @@
+{
+  "name": "shipnova",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:init": "wrangler d1 execute shipnova --remote --file=./schema.sql",
+    "db:migrate": "wrangler d1 migrations apply shipnova --remote"
+  },
+  "dependencies": {"hono": "^4.13.5"},
+  "devDependencies": {"wrangler": "^4.127.1"}
+}

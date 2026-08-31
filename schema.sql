@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS users (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name TEXT NOT NULL,
+ email TEXT NOT NULL UNIQUE,
+ password TEXT NOT NULL,
+ role TEXT NOT NULL DEFAULT 'customer' CHECK(role IN ('customer','seller','admin')),
+ created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE IF NOT EXISTS products (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ seller_id INTEGER NOT NULL,
+ name TEXT NOT NULL,
+ description TEXT NOT NULL DEFAULT '',
+ price REAL NOT NULL DEFAULT 0,
+ stock INTEGER NOT NULL DEFAULT 0,
+ image TEXT NOT NULL DEFAULT '',
+ active INTEGER NOT NULL DEFAULT 1,
+ created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN KEY(seller_id) REFERENCES users(id) ON DELETE CASCADE
+);
+CREATE INDEX IF NOT EXISTS idx_products_seller ON products(seller_id);
+INSERT OR IGNORE INTO users(id,name,email,password,role) VALUES(1,'Administrator','admin@shipnova.local','admin123','admin');
