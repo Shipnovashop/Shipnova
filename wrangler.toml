@@ -9,5 +9,5 @@ binding = "ASSETS"
 [[d1_databases]]
 binding = "DB"
 database_name = "shipnova"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "ee94c087-e68b-49ab-8c6f-c725a39cebe4"
 migrations_dir = "migrations"
